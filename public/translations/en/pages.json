@@ -1,0 +1,55 @@
+{
+  "logout": "Logout",
+  "appBar-language": "Language",
+  "connect_with": "Connect with :",
+  "compte_facebook": "Facebook account",
+  "compte_google": "Google account",
+  "compte_apple": "Apple account",
+  "phone_number": "Phone Number",
+  "or_with_your_email": "Or with your email",
+  "email": "Email",
+  "password": "Password",
+  "save_my_session": "Save my session",
+  "register": {
+    "messages": {
+      "error": "Error",
+
+      "lowerCase": "Password must contain at least one lowercase character",
+      "number": "Password must contain at least one number",
+      "special": "Password must contain at least one special character",
+      "length": "Password must contain at least 8 characters",
+      "notMatch": "Confirm password must match with Password",
+      "upperCase": "Password must contain at least one uppercase character"
+    },
+    "inputs": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dateNaissance": "birth date",
+      "civilité": "Civility",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "mr": "Sir",
+      "mme": "Madame"
+    }
+  },
+  "login": {
+    "inputs": {
+      "email": "Email",
+      "password": "Password"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "users": {
+    "title": "List of {{role}}",
+    "roles": {
+      "Super_Admin": "Super Admin",
+      "Admin": "Admin",
+      "Gerant": "Headmasters",
+      "Comptable": "Accountants"
+    }
+  },
+  "entreprises": { "title": "List of Companies" }
+}

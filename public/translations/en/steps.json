@@ -1,0 +1,8 @@
+{
+  "firstName": "Hello what is your first name ?",
+  "lastName": "Hi {{firstName}} give me your name",
+  "dateNaissance": "what's your birthday ?",
+  "civility": "Your gender !",
+  "email": "Your Email to contact you",
+  "password": "Enter your password"
+}

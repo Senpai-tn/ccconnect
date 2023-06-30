@@ -1,0 +1,47 @@
+{
+  "logout": "Déconnecter",
+  "appBar-language": "Langage",
+  "connect_with": "Se connecter avec :",
+  "compte_facebook": "Compte Facebook",
+  "compte_google": "Compte Google",
+  "compte_apple": "Compte Apple",
+  "phone_number": "Numéro de Téléphone",
+  "or_with_your_email": "Ou avec votre email",
+  "email": "Email",
+  "password": "Mot de passe",
+  "save_my_session": "Sauvegarder ma session",
+  "used_email": "Déja utilisée",
+  "register": {
+    "messages": {
+      "error": "Erreur",
+      "lowerCase": "Mot de passe doit contenir au moins un caractère minuscule",
+      "number": "Mot de passe doit contenir au moins un nombre",
+      "special": "Mot de passe doit contenir au moins un caractère spécial",
+      "length": "Mot de passe doit contenir au moins 8 caractères",
+      "notMatch": "Confirmer mot de passe doit être conforme avec mot de passe",
+      "upperCase": "Mot de passe doit contenir au moins un caractère majuscule"
+    },
+    "inputs": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "dateNaissance": "Date de naissance",
+      "civilité": "Civilité",
+      "email": "Email",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmer mot de passe",
+      "mr": "Monsieur",
+      "mme": "Madame"
+    }
+  },
+  "login": {
+    "inputs": {
+      "email": "Email",
+      "password": "Mot de passe"
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de bord"
+  },
+  "users": { "title": "Liste des utilisateurs" },
+  "entreprises": { "title": "Liste des Entreprises" }
+}
