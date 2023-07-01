@@ -78,7 +78,7 @@ const Login = () => {
 
     dispatch({ type: actions.change_loading, loading: true })
     axios
-      .post(process.env.REACT_APP_URL + '/api/users/login', { email, password })
+      .post(`${process.env.REACT_APP_URL}/api/users/login`, { email, password })
       .then((response) => {
         if (remember) {
           localStorage.setItem('user', JSON.stringify(response.data))

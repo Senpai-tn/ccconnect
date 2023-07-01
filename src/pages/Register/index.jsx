@@ -202,7 +202,7 @@ export default function Register() {
 
     dispatch({ type: actions.change_loading, loading: true })
     axios
-      .post(process.env.REACT_APP_URL + '/api/users/register', {
+      .post(`${process.env.REACT_APP_URL}/api/users/register`, {
         email,
         password,
         firstName,

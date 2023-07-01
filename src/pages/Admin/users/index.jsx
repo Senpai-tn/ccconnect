@@ -8,8 +8,6 @@ import { ColumnFilter } from '../../../components/DataTable/ColumnFilter'
 import { useTranslation } from 'react-i18next'
 import Swal from 'sweetalert2'
 import dayjs from 'dayjs'
-import { TabPanel, a11yProps } from '../../../components/Sidebar/TabPanel'
-
 const Users = () => {
   const [users, setUsers] = useState([])
   const { t } = useTranslation(['pages'])
@@ -23,7 +21,7 @@ const Users = () => {
   const dispatch = useDispatch()
   const getUsers = (role = 'Admin') => {
     axios
-      .post(process.env.REACT_APP_URL + '/api/users/search', {
+      .post(`${process.env.REACT_APP_URL}/api/users/search`, {
         filter: { role },
       })
       .then((response) => {

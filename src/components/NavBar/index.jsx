@@ -104,7 +104,7 @@ const NavBar = () => {
                 <>
                   {user.photo ? (
                     <img
-                      src={'http://127.0.0.1:5000/images/' + user.photo}
+                      src={`${process.env.REACT_APP_URL}/images/${user.photo}`}
                       style={{
                         height: '30px',
                         width: '30px',

@@ -18,7 +18,7 @@ const Entreprises = () => {
   const dispatch = useDispatch()
   const getUsers = () => {
     axios
-      .post('http://127.0.0.1:5000/api/entreprises/search')
+      .post(`${process.env.REACT_APP_URL}/api/entreprises/search`)
       .then((response) => {
         setUsers(response.data)
         dispatch({ type: actions.change_loading, loading: false })
@@ -45,9 +45,12 @@ const Entreprises = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put('http://127.0.0.1:5000/api/entreprises/' + selected._id, {
-              deletedAt: dayjs(),
-            })
+            .put(
+              `${process.env.REACT_APP_URL}/api/entreprises/${selected._id}`,
+              {
+                deletedAt: dayjs(),
+              }
+            )
             .then((response) => {
               getUsers()
               Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
@@ -57,7 +60,7 @@ const Entreprises = () => {
       setType('')
     } else if (type === 'Block') {
       axios
-        .put('http://127.0.0.1:5000/api/entreprises/' + selected._id, {
+        .put(`${process.env.REACT_APP_URL}/api/entreprises/${selected._id}`, {
           blockedAt: dayjs(),
         })
         .then((response) => {
