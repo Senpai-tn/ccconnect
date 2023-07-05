@@ -48,7 +48,8 @@
       "Super_Admin": "Super Admin",
       "Admin": "Admin",
       "Gerant": "Headmasters",
-      "Comptable": "Accountants"
+      "Comptable": "Accountants",
+      "Salarie":"Employee"
     }
   },
   "entreprises": { "title": "List of Companies" }

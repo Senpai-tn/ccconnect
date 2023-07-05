@@ -59,20 +59,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,600,700");
-@import url("./../icons/simple-line-icons/css/simple-line-icons.css");
-@import url("./../icons/font-awesome/css/all.min.css");
-@import url("./../icons/material-design-iconic-font/css/materialdesignicons.min.css");
-@import url("./../icons/themify-icons/css/themify-icons.css");
-@import url("./../icons/line-awesome/css/line-awesome.min.css");
-@import url("./../icons/avasta/css/style.css");
-@import url("./../icons/flaticon/flaticon.css");
-@import url("./../icons/flaticon_1/flaticon_1.css");
-@import url("./../icons/icomoon/icomoon.css");
-@import url("./../icons/bootstrap-icons/font/bootstrap-icons.css");
-@import url(./../vendor/animate/animate.min.css);
-@import url(./../vendor/aos/css/aos.min.css);
-@import url(./../vendor/perfect-scrollbar/css/perfect-scrollbar.css);
-@import url(./../vendor/metismenu/css/metisMenu.min.css);
+
 :root {
   --primary: #44814E;
   --secondary: #717579;
@@ -22607,10 +22594,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
         .page-titles .breadcrumb li.active a {
           color: #717579; }
     .page-titles .breadcrumb .breadcrumb-item + .breadcrumb-item:before {
-      /* font-family: 'simple-line-icons';
-                font-weight: 400;
-				position:absolute;
-                font-size: 10px; */
+    
       color: #717579; }
     .page-titles .breadcrumb-datepicker {
       font-size: 0.75rem;
@@ -30531,4 +30515,3 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     [data-theme-version="dark"] .footer .copyright p {
       color: #fff; }
 
-/*# sourceMappingURL=style.css.map */

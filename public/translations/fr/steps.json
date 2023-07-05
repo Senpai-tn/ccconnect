@@ -1,8 +1,8 @@
 {
-  "firstName": "Bonjour quel est votre prénom ?",
-  "lastName": "Salut {{firstName}} donner moi votre nom",
-  "dateNaissance": "quelle est votre date de naissance ?",
-  "civility": "Votre sexe !",
-  "email": "Ton Email pour vous contacter",
-  "password": "Entrer votre mot de passe"
+  "firstName": "Veuillez indiquer votre prénom?",
+  "lastName": "Merci, {{firstName}}. Maintenant, veuillez indiquer votre nom de famille :",
+  "dateNaissance": "Merci, {{firstName}} {{lastName}}. Quelle est votre date de naissance ?",
+  "civility": "Merci, {{firstName}} {{lastName}}. Comment souhaitez-vous être appelé(e) ?",
+  "email": "Ravi de vous connaître, {{civility}} {{lastName}}. Quelle est votre adresse e-mail ?",
+  "password": "Parfait, {{civility}} {{lastName}}. Pour terminer, veuillez créer un mot de passe sécurisé :"
 }

@@ -1,8 +1,8 @@
 {
-  "firstName": "Hello what is your first name ?",
-  "lastName": "Hi {{firstName}} give me your name",
-  "dateNaissance": "what's your birthday ?",
-  "civility": "Your gender !",
-  "email": "Your Email to contact you",
-  "password": "Enter your password"
+  "firstName": "Please provide your first name :",
+  "lastName": "Thank you, {{firstName}}. Now, please enter your last name:",
+  "dateNaissance": "Thank you, {{firstName}} {{lastName}}. What is your date of birth?",
+  "civility": "Thank you, {{firstName}} {{lastName}}. How would you like to be addressed?",
+  "email": "Nice to meet you, {{civility}} {{lastName}}. What is your email address?",
+  "password": "Great, {{civility}} {{lastName}}. To finish, please create a secure password:"
 }

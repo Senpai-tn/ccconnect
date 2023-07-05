@@ -42,6 +42,12 @@
   "dashboard": {
     "title": "Tableau de bord"
   },
-  "users": { "title": "Liste des utilisateurs" },
+  "users": { "title": "Liste des utilisateurs", "roles": {
+    "Super_Admin": "Super Admin",
+    "Admin": "Admin",
+    "Gerant": "Gérant",
+    "Comptable": "Comptable",
+    "Salarie":"Salarié"
+  } },
   "entreprises": { "title": "Liste des Entreprises" }
 }

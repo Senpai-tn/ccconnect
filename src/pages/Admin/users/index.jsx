@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs, Typography } from '@mui/material'
+import { Box, Button, Tab, Tabs, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
@@ -8,18 +8,20 @@ import { ColumnFilter } from '../../../components/DataTable/ColumnFilter'
 import { useTranslation } from 'react-i18next'
 import Swal from 'sweetalert2'
 import dayjs from 'dayjs'
+import { useNavigate } from 'react-router-dom'
 const Users = () => {
   const [users, setUsers] = useState([])
   const { t } = useTranslation(['pages'])
   const [selected, setSelected] = useState(null)
   const [type, setType] = useState('')
-  const [value, setValue] = React.useState(0)
+  const [value, setValue] = useState(0)
   const [role, setRole] = useState('Super_Admin')
+  const navigate = useNavigate()
   const handleChange = (event, newValue) => {
     setValue(newValue)
   }
   const dispatch = useDispatch()
-  const getUsers = (role = 'Admin') => {
+  const getUsers = (role) => {
     axios
       .post(`${process.env.REACT_APP_URL}/api/users/search`, {
         filter: { role },
@@ -31,7 +33,7 @@ const Users = () => {
   }
   useEffect(() => {
     dispatch({ type: actions.change_loading, loading: true })
-    getUsers()
+    getUsers(role)
   }, [])
 
   useEffect(() => {
@@ -47,31 +49,37 @@ const Users = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .put('http://127.0.0.1:5000/api/users/' + selected._id, {
+            .put(`${process.env.REACT_APP_URL}/api/users/${selected._id}`, {
               deletedAt: dayjs(),
             })
-            .then((response) => {
-              getUsers()
+            .then(() => {
+              getUsers(role)
               Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
             })
         }
       })
-      setType('')
-    } else if (type === 'Block') {
+    }
+    if (type === 'Block') {
       axios
         .put('http://127.0.0.1:5000/api/users/' + selected._id, {
           blockedAt: dayjs(),
         })
-        .then((response) => {
-          getUsers()
+        .then(() => {
+          getUsers(role)
           Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
         })
     }
+    if (type === 'Add') {
+      navigate('/user', { state: { type, selected, role } })
+    }
+    if (type === 'Update') {
+      navigate('/user', {
+        state: { type, selected, role },
+      })
+    }
+    setType('')
   }, [type])
 
-  // Comptable
-
-  // Salarie
   useEffect(() => {
     switch (value) {
       case 0:
@@ -86,11 +94,14 @@ const Users = () => {
       case 3:
         setRole('Comptable')
         break
+      case 4:
+        setRole('Salarie')
+        break
     }
   }, [value])
 
   useEffect(() => {
-    getUsers(role)
+    role && getUsers(role)
   }, [role])
   return (
     <Box sx={{ position: 'absolute', right: 0 }} p={'30px'} width={'95%'}>
@@ -104,9 +115,20 @@ const Users = () => {
             <Tab label="Liste des Super Admin" />
             <Tab label="Liste des Admin" />
             <Tab label="Liste des Gérants" />
-            <Tab label="Liste des Comptable" />
+            <Tab label="Liste des Comptables" />
+            <Tab label="Liste des Salariés" />
           </Tabs>
         </Box>
+        <Button
+          onClick={() => {
+            setType('Add')
+          }}
+          sx={{ my: '20px' }}
+          variant="contained"
+          color="success"
+        >
+          Ajouter {t('pages:users.roles.' + role)}
+        </Button>
       </Box>
       {users.length > 0 ? (
         <FilteringTable
@@ -115,6 +137,7 @@ const Users = () => {
           })}
           onDelete={setSelected}
           onBlock={setSelected}
+          onUpdate={setSelected}
           setType={setType}
           columns={[
             {
@@ -123,6 +146,16 @@ const Users = () => {
               accessor: '_id',
               Filter: ColumnFilter,
               //disableFilters: true,
+            },
+            {
+              Header: 'Prénom',
+              accessor: 'firstName',
+              Filter: ColumnFilter,
+            },
+            {
+              Header: 'Nom',
+              accessor: 'lastName',
+              Filter: ColumnFilter,
             },
             {
               Header: 'Téléphone',

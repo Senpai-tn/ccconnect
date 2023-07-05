@@ -25,16 +25,16 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
-    <link href="./style-temp.css" rel="stylesheet" />
-    <link href="./style.css" rel="stylesheet" />
-    <link href="./stylePageNotFound.css" rel="stylesheet" />
+    <link href="style-temp.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link href="stylePageNotFound.css" rel="stylesheet" />
     <style>
       @font-face {
         font-family: 'GilroyRegular';
         font-style: normal;
         font-weight: 400;
         src: local('Gilroy Regular'), local('Gilroy Regular'),
-          url('./Gilroy-Regular.ttf') format('truetype');
+          url('Gilroy-Regular.ttf') format('truetype');
       }
       * {
         box-sizing: border-box;
@@ -44,6 +44,17 @@
       }
       ul {
         display: block;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type='number'] {
+        -moz-appearance: textfield;
       }
     </style>
   </head>

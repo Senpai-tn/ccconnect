@@ -219,9 +219,7 @@ const NavBar = () => {
                     onKeyDown={() => toggleDrawer(false)}
                   >
                     <List>
-                      {user ? (
-                        <></>
-                      ) : (
+                      {!user && (
                         <>
                           <ListItem disablePadding>
                             <ListItemButton onClick={() => navigate('/')}>
@@ -273,6 +271,28 @@ const NavBar = () => {
                           />
                         </ListItemButton>
                       </ListItem>
+
+                      {user && (
+                        <>
+                          <ListItem disablePadding>
+                            <ListItemButton
+                              onClick={() => {
+                                dispatch({
+                                  type: actions.login,
+                                  user: null,
+                                })
+                                navigate('/')
+                              }}
+                            >
+                              <ListItemIcon></ListItemIcon>
+                              <ListItemText
+                                sx={{ color: 'red' }}
+                                primary={t('logout')}
+                              />
+                            </ListItemButton>
+                          </ListItem>
+                        </>
+                      )}
                     </List>
                   </Box>
                 </Drawer>

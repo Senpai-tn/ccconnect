@@ -15,7 +15,7 @@ import { Box, Stack } from '@mui/material'
 import Sidebar from './components/Sidebar'
 import Users from './pages/Admin/users'
 import { Entreprises, Form as EntrepriseForm } from './pages/Admin/entreprises'
-import socket from './Socket'
+import FormUser from './pages/Admin/users/FormUser'
 
 function App() {
   const { user, loading } = useSelector((state) => state.user)
@@ -23,12 +23,6 @@ function App() {
   const dispatch = useDispatch()
   const theme = darkTheme(isDark)
 
-  useEffect(() => {
-    socket.connect()
-    socket.on('getSocketId', (data) => {
-      alert(data.name)
-    })
-  }, [])
   return (
     <Suspense fallback="">
       <ThemeProvider theme={theme}>
@@ -56,6 +50,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/users" element={<Users />} />
+                <Route path="/user" element={<FormUser />} />
                 <Route path="/entreprises" element={<Entreprises />} />
                 <Route path="/entreprise" element={<EntrepriseForm />} />
               </Routes>

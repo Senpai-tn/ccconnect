@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Box from '@mui/material/Box'
 import Stepper from '@mui/material/Stepper'
 import Step from '@mui/material/Step'
@@ -21,7 +21,6 @@ import {
 import { Controller, useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
 import validator from 'validator'
 import { useDispatch } from 'react-redux'
@@ -87,7 +86,10 @@ export default function Register() {
       ],
     },
     {
-      label: t('steps:dateNaissance'),
+      label: t('steps:dateNaissance', {
+        firstName: watch('firstName'),
+        lastName: watch('lastName'),
+      }),
       description: ``,
       fields: [
         {
@@ -98,7 +100,10 @@ export default function Register() {
       ],
     },
     {
-      label: t('steps:civility'),
+      label: t('steps:civility', {
+        firstName: watch('firstName'),
+        lastName: watch('lastName'),
+      }),
       description: ``,
       fields: [
         {
@@ -109,7 +114,10 @@ export default function Register() {
       ],
     },
     {
-      label: t('steps:email'),
+      label: t('steps:email', {
+        civility: t('pages:register.inputs.' + watch('civilité')),
+        lastName: watch('lastName'),
+      }),
       description: ``,
       fields: [
         {
@@ -120,7 +128,10 @@ export default function Register() {
       ],
     },
     {
-      label: t('steps:password'),
+      label: t('steps:password', {
+        civility: t('pages:register.inputs.' + watch('civilité')),
+        lastName: watch('lastName'),
+      }),
       description: ``,
       fields: [
         {
@@ -380,31 +391,6 @@ export default function Register() {
                             </FormControl>
                           ) : field.type === 'password' ? (
                             <>
-                              {/* <TextField
-                                sx={{
-                                  '& .MuiOutlinedInput-root': {
-                                    borderRadius: '50px',
-                                  },
-                                }}
-                                type={field.type}
-                                fullWidth
-                                value={
-                                  field.key === 'lastName'
-                                    ? value.toUpperCase()
-                                    : field.key === 'firstName'
-                                    ? value.charAt(0).toUpperCase() +
-                                      value.slice(1).toLowerCase()
-                                    : value
-                                }
-                                onChange={(e) => {
-                                  onChange(e.target.value)
-                                  validatePassword()
-                                }}
-                                autoFocus={i == 0}
-                                label={field.label}
-                                error={!!error}
-                                helperText={error && error.message}
-                              /> */}
                               <FormControl variant="outlined" fullWidth>
                                 <TextField
                                   sx={{

@@ -121,24 +121,30 @@ export const FilteringTable = ({
                                     : '#000',
                               }}
                             >
-                              {cell.column.type === 'date'
-                                ? dayjs(
-                                    cell.render('Cell').props.cell.value
-                                  ).format('DD-MM-YYYY')
-                                : cell.column.type === 'array'
-                                ? cell
-                                    .render('Cell')
-                                    .props.cell.value.map((v) => {
-                                      return v[cell.column.field] + ' , '
-                                    })
-                                : cell.column.type === 'object'
-                                ? true
-                                  ? console.log(
-                                      row.original['gerant'] &&
-                                        row.original['gerant']['cp']
-                                    )
-                                  : 'CCCC'
-                                : cell.render('Cell')}
+                              {cell.column.type === 'img' ? (
+                                <img />
+                              ) : cell.column.type === 'date' ? (
+                                dayjs(
+                                  cell.render('Cell').props.cell.value
+                                ).format('DD-MM-YYYY')
+                              ) : cell.column.type === 'array' ? (
+                                cell
+                                  .render('Cell')
+                                  .props.cell.value.map((v) => {
+                                    return v[cell.column.field] + ' , '
+                                  })
+                              ) : cell.column.type === 'object' ? (
+                                true ? (
+                                  console.log(
+                                    row.original['gerant'] &&
+                                      row.original['gerant']['cp']
+                                  )
+                                ) : (
+                                  'CCCC'
+                                )
+                              ) : (
+                                cell.render('Cell')
+                              )}
                             </Typography>
                           </div>
                         </td>

@@ -8,15 +8,16 @@ import { ColumnFilter } from '../../../components/DataTable/ColumnFilter'
 import { useTranslation } from 'react-i18next'
 import Swal from 'sweetalert2'
 import dayjs from 'dayjs'
+import { useNavigate } from 'react-router-dom'
 
 const Entreprises = () => {
   const [users, setUsers] = useState([])
   const { t } = useTranslation(['pages'])
   const [selected, setSelected] = useState(null)
   const [type, setType] = useState('')
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
-  const getUsers = () => {
+  const getEntreprises = () => {
     axios
       .post(`${process.env.REACT_APP_URL}/api/entreprises/search`)
       .then((response) => {
@@ -29,7 +30,7 @@ const Entreprises = () => {
   }
   useEffect(() => {
     dispatch({ type: actions.change_loading, loading: true })
-    getUsers()
+    getEntreprises()
   }, [])
 
   useEffect(() => {
@@ -52,32 +53,37 @@ const Entreprises = () => {
               }
             )
             .then((response) => {
-              getUsers()
+              getEntreprises()
               Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
             })
         }
       })
-      setType('')
-    } else if (type === 'Block') {
-      axios
-        .put(`${process.env.REACT_APP_URL}/api/entreprises/${selected._id}`, {
-          blockedAt: dayjs(),
-        })
-        .then((response) => {
-          getUsers()
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
-        })
     }
+    if (type === 'Update') {
+      navigate('/entreprise', { state: { type, selected } })
+    }
+    if (type === 'Add') {
+      navigate('/entreprise', { state: { type, selected } })
+    }
+    setType('')
   }, [type])
   return (
     <Box sx={{ position: 'absolute', right: 0 }} p={'30px'} width={'95%'}>
-      <Button variant="outlined" sx={{ my: '10px' }}>
+      <Button
+        onClick={() => {
+          setType('Add')
+        }}
+        variant="contained"
+        color="success"
+        sx={{ my: '10px' }}
+      >
         Ajouter une nouvelle entreprise
       </Button>
       {users.length > 0 ? (
         <FilteringTable
           title={t('pages:entreprises.title')}
           onDelete={setSelected}
+          onUpdate={setSelected}
           setType={setType}
           columns={[
             {
@@ -86,6 +92,13 @@ const Entreprises = () => {
               accessor: '_id',
               Filter: ColumnFilter,
               //disableFilters: true,
+            },
+            {
+              Header: 'Logo',
+              accessor: 'logo',
+              type: 'img',
+              Filter: ColumnFilter,
+              disableFilters: true,
             },
             {
               Header: 'SIRET',
